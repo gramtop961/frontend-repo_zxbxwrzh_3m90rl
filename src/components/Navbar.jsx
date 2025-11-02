@@ -68,7 +68,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white shadow-[0_8px_40px_-12px_rgba(168,85,247,0.35)] backdrop-blur-xl">
           <a href="#home" onClick={(e)=>handleNavClick(e, '#home')} className="text-sm font-semibold tracking-tight">
-            <span className="bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">My Portfolio</span>
+            <span className="bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">Muhammad Hassan</span>
           </a>
 
           <nav className="hidden items-center gap-1 md:flex">
@@ -94,7 +94,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <Menu className="h-5 w-5 rotate-90 transition" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 

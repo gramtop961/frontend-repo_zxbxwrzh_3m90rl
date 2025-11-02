@@ -4,8 +4,9 @@ import Spline from "@splinetool/react-spline";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[90vh] w-full overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-fuchsia-900 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(168,85,247,0.25),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(56,189,248,0.25),transparent_35%),radial-gradient(circle_at_50%_90%,rgba(99,102,241,0.25),transparent_40%)]" />
+    <section id="home" className="relative min-h-[90vh] w-full overflow-hidden bg-gradient-to-br from-slate-950 via-[#0b0b2a] to-[#160a33] text-white">
+      {/* Gradient noise field */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(168,85,247,0.22),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(56,189,248,0.22),transparent_35%),radial-gradient(circle_at_50%_90%,rgba(99,102,241,0.22),transparent_40%)]" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 py-16 md:flex-row md:py-24">
         <motion.div
@@ -14,16 +15,20 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="z-10 w-full md:w-1/2"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 backdrop-blur">
+          <div className 
+            ="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 backdrop-blur">
             <Sparkles className="h-4 w-4 text-fuchsia-300" />
-            <span className="text-xs text-fuchsia-200">Interactive • Modern • Playful</span>
+            <span className="text-xs text-fuchsia-200">Interactive • Futuristic • Vibrant</span>
           </div>
           <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            Crafting delightful apps and websites that feel alive
+            Muhammad Hassan
           </h1>
+          <p className="mt-2 bg-gradient-to-r from-fuchsia-300 via-cyan-300 to-indigo-300 bg-clip-text text-lg font-semibold text-transparent">
+            App & Web Developer — building immersive, high‑performance experiences
+          </p>
           <p className="mt-4 max-w-xl text-base text-slate-200 sm:text-lg">
-            I build fast, responsive, and immersive digital experiences with a unique visual
-            identity. Explore my work and see how I can help bring your ideas to life.
+            I craft fast, responsive, and animated products with a distinct visual identity. Dive into my work and
+            let’s create something memorable together.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
@@ -51,10 +56,10 @@ export default function Hero() {
         >
           <div className="relative h-[380px] w-full sm:h-[450px] md:h-[520px]">
             <Spline
-              scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode"
+              scene="https://prod.spline.design/wwTRdG1D9CkNs368/scene.splinecode"
               style={{ width: "100%", height: "100%" }}
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
           </div>
         </motion.div>
       </div>

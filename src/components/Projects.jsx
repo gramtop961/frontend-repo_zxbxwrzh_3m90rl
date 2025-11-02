@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
 
 const projects = [
   {
@@ -26,10 +27,17 @@ const projects = [
 ];
 
 export default function Projects() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
+
   return (
     <section id="projects" className="relative w-full bg-gradient-to-b from-slate-950 to-slate-900 py-20 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_40%_at_50%_0%,rgba(56,189,248,0.15),transparent),radial-gradient(50%_50%_at_20%_80%,rgba(236,72,153,0.15),transparent)]" />
-      <div className="relative mx-auto max-w-7xl px-6">
+      <motion.div style={{ y }} className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="h-full w-full bg-[radial-gradient(50%_40%_at_50%_0%,rgba(56,189,248,0.15),transparent),radial-gradient(50%_50%_at_20%_80%,rgba(236,72,153,0.15),transparent)]" />
+      </motion.div>
+
+      <div ref={ref} className="relative mx-auto max-w-7xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,11 +58,12 @@ export default function Projects() {
               href={p.link}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur"
+              initial={{ opacity: 0, y: 16, rotateX: -6 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: i * 0.06 }}
+              whileHover={{ scale: 1.02, rotateX: 0.5, rotateZ: -0.2 }}
+              className="group relative transform-gpu overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_10px_50px_-20px_rgba(99,102,241,0.35)] backdrop-blur"
             >
               <div className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br ${p.colors} opacity-0 transition group-hover:opacity-100`} />
               <div className="relative">

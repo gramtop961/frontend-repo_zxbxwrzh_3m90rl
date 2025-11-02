@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Code2, Smartphone, Globe, Server, Database, Layers } from "lucide-react";
+import { useRef } from "react";
 
 const skills = [
   {
@@ -41,10 +42,16 @@ const skills = [
 ];
 
 export default function Skills() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [20, -20]);
+
   return (
     <section id="skills" className="relative w-full bg-slate-950 py-20 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_70%_20%,rgba(99,102,241,0.25),transparent),radial-gradient(40%_40%_at_10%_80%,rgba(236,72,153,0.2),transparent)]" />
-      <div className="relative mx-auto max-w-7xl px-6">
+      <motion.div style={{ y }} className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="h-full w-full bg-[radial-gradient(60%_60%_at_70%_20%,rgba(99,102,241,0.25),transparent),radial-gradient(40%_40%_at_10%_80%,rgba(236,72,153,0.2),transparent)]" />
+      </motion.div>
+      <div ref={ref} className="relative mx-auto max-w-7xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,10 +69,11 @@ export default function Skills() {
           {skills.map((s, i) => (
             <motion.div
               key={s.title}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 16, rotate: -0.4 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
+              transition={{ duration: 0.55, delay: i * 0.06 }}
+              whileHover={{ y: -4, scale: 1.01 }}
               className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition`}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${s.hue} opacity-0 transition group-hover:opacity-100`} />
