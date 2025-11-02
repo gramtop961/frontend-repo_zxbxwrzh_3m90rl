@@ -1,65 +1,58 @@
-import { motion } from "framer-motion";
-import { Rocket, Sparkles } from "lucide-react";
-import Spline from "@splinetool/react-spline";
+import Spline from '@splinetool/react-spline';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[90vh] w-full overflow-hidden bg-gradient-to-br from-slate-950 via-[#0b0b2a] to-[#160a33] text-white">
-      {/* Gradient noise field */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(168,85,247,0.22),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(56,189,248,0.22),transparent_35%),radial-gradient(circle_at_50%_90%,rgba(99,102,241,0.22),transparent_40%)]" />
+    <section id="home" className="relative min-h-[100svh] w-full overflow-hidden">
+      {/* 3D Scene */}
+      <div className="absolute inset-0">
+        <Spline scene="https://prod.spline.design/rwKT-aWtlkdY-8UV/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+      </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 py-16 md:flex-row md:py-24">
+      {/* Soft radial light to match the orange vibe; ensure it doesn't block Spline */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_15%_10%,rgba(255,255,255,0.6),transparent_60%)]" />
+
+      {/* Content overlay */}
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-28 pb-20 grid md:grid-cols-12 items-center gap-10">
         <motion.div
+          className="md:col-span-7"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="z-10 w-full md:w-1/2"
+          transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          <div className 
-            ="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 backdrop-blur">
-            <Sparkles className="h-4 w-4 text-fuchsia-300" />
-            <span className="text-xs text-fuchsia-200">Interactive • Futuristic • Vibrant</span>
-          </div>
-          <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            Muhammad Hassan
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            <span className="block bg-clip-text text-transparent bg-gradient-to-b from-zinc-900 to-zinc-700 dark:from-white dark:to-zinc-300">
+              Muhammad Hassan
+            </span>
+            <span className="mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-400">
+              App & Web Developer
+            </span>
           </h1>
-          <p className="mt-2 bg-gradient-to-r from-fuchsia-300 via-cyan-300 to-indigo-300 bg-clip-text text-lg font-semibold text-transparent">
-            App & Web Developer — building immersive, high‑performance experiences
+          <p className="mt-5 max-w-xl text-zinc-700 dark:text-zinc-300">
+            I craft playful, performant experiences. From interactive 3D heroes to reliable
+            full‑stack apps — I bring ideas to life with care and motion.
           </p>
-          <p className="mt-4 max-w-xl text-base text-slate-200 sm:text-lg">
-            I craft fast, responsive, and animated products with a distinct visual identity. Dive into my work and
-            let’s create something memorable together.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-400 px-5 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:shadow-cyan-400/40"
-            >
-              <Rocket className="h-4 w-4 transition group-hover:translate-x-0.5" />
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="#showcase" className="inline-flex items-center gap-2 rounded-md px-4 py-2 bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-md shadow-orange-500/30 hover:brightness-105 transition">
               View Projects
             </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
-            >
-              Contact Me
+            <a href="#contact" className="inline-flex items-center gap-2 rounded-md px-4 py-2 bg-white/80 dark:bg-zinc-800/80 backdrop-blur border border-white/50 dark:border-white/10 text-zinc-900 dark:text-white hover:bg-white/90 dark:hover:bg-zinc-800/90 transition">
+              Contact
             </a>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative w-full md:w-1/2"
-          aria-label="Interactive 3D scene"
+          className="md:col-span-5"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
         >
-          <div className="relative h-[380px] w-full sm:h-[450px] md:h-[520px]">
-            <Spline
-              scene="https://prod.spline.design/wwTRdG1D9CkNs368/scene.splinecode"
-              style={{ width: "100%", height: "100%" }}
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+          <div className="pointer-events-none select-none text-sm text-zinc-600/80 dark:text-zinc-300/80">
+            <p className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/70 dark:bg-zinc-800/60 border border-white/50 dark:border-white/10 shadow-sm">
+              <span className="inline-block w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+              Live Spline — try clicking and dragging the scene!
+            </p>
           </div>
         </motion.div>
       </div>
